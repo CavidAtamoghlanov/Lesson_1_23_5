@@ -1,0 +1,102 @@
+-- Single line Comment
+/*
+	Multi
+	Line
+	Comment
+*/
+--------------------------------------------------------------
+-- DDL (CREATE, DROP, ALTER, TRUNCATE)
+-- DML (SELECT, UPDATE, INSERT, DELETE)
+-- PRINT
+
+
+
+USE Northwind
+
+
+-- SELECT  => Data sorgulamaq ucundur. Neticeni bize table formasinda veri
+
+SELECT * FROM Products
+
+SELECT ProductName AS [Mehsulun Adi], UnitsInStock AS [Mehsulun Miqdari] 
+FROM Products
+
+
+SELECT * FROM Employees
+
+
+SELECT FirstName, LastName, City FROM Employees
+
+SELECT FirstName + '       ' + LastName AS [FullName], City 
+FROM Employees
+
+
+
+SELECT CAST(EmployeeID AS nvarchar(20)) + ' ' + FirstName + ' ' + LastName, City 
+FROM Employees
+
+
+SELECT CONVERT(nvarchar(20), EmployeeID) + ' ' + FirstName + ' ' + LastName, City 
+FROM Employees
+
+
+
+SELECT STR(EmployeeID) + ' ' + FirstName + ' ' + LastName, City 
+FROM Employees
+
+
+SELECT TRIM(STR(EmployeeID)) + ' ' + FirstName + ' ' + LastName, City 
+FROM Employees
+
+
+SELECT LTRIM(STR(EmployeeID)) + ' ' + FirstName + ' ' + LastName, City 
+FROM Employees
+
+
+
+SELECT RTRIM(STR(EmployeeID)) + ' ' + FirstName + ' ' + LastName, City 
+FROM Employees
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- --- -- --- --- --- --- --- --- ---
+-- ORDER BY  -> Sort etmek demekdir.
+
+SELECT * FROM Products ORDER BY UnitPrice DESC
+
+
+-- TOP
+SELECT TOP 3 * FROM Products ORDER BY UnitPrice ASC
+
+
+SELECT TOP 3 ProductName FROM Products ORDER BY UnitPrice DESC
+
+
+
+-- Fazi
+SELECT TOP 30 PERCENT * FROM Products ORDER BY UnitPrice ASC
+
+
+-- WITH TIES
+SELECT TOP 1 WITH TIES  * FROM Products ORDER BY CategoryID ASC
+
+
+-- DISTINCT
+SELECT DISTINCT CategoryID FROM Products ORDER BY CategoryID ASC
+
+
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+-- WHERE  => Sorguya  Sert vermek ucundur
+-- OPERATORS  
+-- (>, <, >=, <=, =, !>, !<, !=, <>, BETWEEN, LIKE, IN, NOT IN, IS NULL, IS NOT NULL, AND, OR, NOT)
+
+
+SELECT * FROM Categories WHERE CategoryID > 5
+SELECT * FROM Categories WHERE CategoryID < 5
+SELECT * FROM Categories WHERE CategoryID >= 5
+SELECT * FROM Categories WHERE CategoryID <= 5
+SELECT * FROM Categories WHERE CategoryID !> 5
+SELECT * FROM Categories WHERE CategoryID !< 5
+SELECT * FROM Categories WHERE CategoryID = 5
+
+-- Ikiside beraber deyil demekdir
+SELECT * FROM Categories WHERE CategoryID != 5
+SELECT * FROM Categories WHERE CategoryID <> 5
